@@ -23,54 +23,78 @@ namespace Resume.Models
         public string UserDisplayName { get; set; }
         public string Summary { get; set; }
         public string SummaryName { get; set; }
-        public string Experience // String to store in database containing all indivudual resume experiences.
-        {
-            get; set;
-
-        }
+        public string Experience { get; set; } // Store as Json
+        public string Education { get; set; } // Store as Json
+        public string Skill { get; set; } // Store as Json
 
         [NotMapped]
-        public List<SingleExperience> Experiences
-        {
-            get; set;
-        }
+        public List<SingleExperience> Experiences { get; set; }
+
+        [NotMapped]
+        public List<SingleEducation> Educations { get; set; }
+
+        [NotMapped]
+        public List<SingleSkill> Skills { get; set; }
+
+        [NotMapped]
+        public ContactInformation Contacts { get; set; }
 
         public string ExperienceName { get; set; }
-        public string Education { get; set; }
         public string EducationName { get; set; }
-        public string Skills { get; set; }
-        public string SkillsName { get; set; }
+        public string SkillName { get; set; }
+
         public string Contact { get; set; }
         public string ContactName { get; set; }
 
     }
 
     [NotMapped]
-    public class SingleExperience // Singe experience in a resume.
+    public class ContactInformation
+    {
+        [Phone]
+        public string Phone { get; set; }
+
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Url]
+        public string Linkedin { get; set; }
+
+        [Url]
+        public string PersonalWebsite { get; set; }
+    }
+
+    [NotMapped]
+    public class SingleExperience 
     {
         public string Position { get; set; }
         public string Company { get; set; }
         public string StartDate { get; set; }
         public string EndDate { get; set; }
         public string Description { get; set; }
+        public string Location { get; set; }
         public bool Enabled { get; set; }
         public int Order { get; set; }
     }
 
-    //[NotMapped]
-    //public class Education
-    //{
-    //    public string Degree { get; set; }
-    //    public string School { get; set; }
-    //    public string StartDate { get; set; }
-    //    public string EndtDate { get; set; }
-    //    public string Description { get; set; }
-    //}
+    [NotMapped]
+    public class SingleEducation
+    {
+        public string Degree { get; set; }
+        public string School { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
+        public string Description { get; set; }
+        public string Location { get; set; }
+        public string GPA { get; set; }
+        public bool Enabled { get; set; }
+        public int Order { get; set; }
+    }
 
-    //[NotMapped]
-    //public class Skill
-    //{
-    //    public string SkillName { get; set; }
-    //    public string ExperienceRating { get; set; }
-    //}
+    [NotMapped]
+    public class SingleSkill
+    {
+        public string Name { get; set; }
+        public int SkillRating { get; set; }
+    }
 }

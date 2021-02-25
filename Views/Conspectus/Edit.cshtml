@@ -18,20 +18,32 @@
             <div class="accordion accordion-flush" id="accordionExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                             Resume Name and User Display Name
                         </button>
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <div class="form-group">
-                                <label asp-for="ResumeName" class="form-label"></label>
+                            @*<div class="form-floating">
+
                                 <input asp-for="ResumeName" class="form-control" />
+                                <label asp-for="ResumeName" class="form-label"></label>
                                 <span asp-validation-for="ResumeName" class="text-danger"></span>
-                            </div>
+                            </div>*@
+
                             <div class="form-group">
-                                <label asp-for="UserDisplayName" class="form-label"></label>
+                                @*<label for="basic-url" class="form-label">Your vanity URL</label>*@
+                                <label asp-for="ResumeName" class="form-label"></label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon3">https://localhost/</span>
+                                    <input asp-for="ResumeName" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-floating">
+
                                 <input asp-for="UserDisplayName" class="form-control" />
+                                <label asp-for="UserDisplayName" class="form-label"></label>
                                 <span asp-validation-for="UserDisplayName" class="text-danger"></span>
                             </div>
                         </div>
@@ -45,9 +57,10 @@
                     </h2>
                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <div class="form-group">
+                            <div class="form-floating">
+
+                                <textarea asp-for="Summary" class="form-control rDescription"></textarea>
                                 <label asp-for="Summary" class="form-label"></label>
-                                <textarea asp-for="Summary" class="form-control"></textarea>
                                 <span asp-validation-for="Summary" class="text-danger"></span>
                             </div>
                         </div>
@@ -78,12 +91,87 @@
                             </div>
                             <hr />
                             <div id="ExperienceWrapper">
-                                @{ 
-                                    
+                                @{
+                                    if (Model.Experiences != null)
+                                    {
+                                        for (int i = 0; i < Model.Experiences.Count; i++)
+                                        {
+                                            SingleExperience se = Model.Experiences[i];
+                                                <div id="Experience@(i)" class="form-group mb-2">
 
+                                                    <div class="row mb-2">
+                                                        <div class="col  text-end">
+                                                            <a class="text-danger" onclick="deleteElement('Experience@(i)')">Delete</a>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row bg-light">
+     
+                                                        <div class="col-lg-4">
+
+                                                            <div class="form-floating">
+
+                                                                <input type="date" name="Experiences[@i].StartDate" id="Experiences[@i].StartDate"
+                                                                       class="form-control mb-2"
+                                                                       value="@se.StartDate"
+                                                                       min="1930-01-01" max="">
+                                                                <label class="form-label">Start Date</label>
+                                                            </div>
+
+
+                                                            <div class="form-floating">
+                                                                <input type="date" name="Experiences[@i].EndDate" id="Experiences[@i].EndDate"
+                                                                       class="form-control mb-2"
+                                                                       value="@se.EndDate"
+                                                                       min="1930-01-01" max="">
+                                                                <label class="form-label">End Date or Current</label>
+                                                            </div>
+                                                            
+
+
+                                                            <div class="form-floating">
+                                                                <input name="Experiences[@i].Company" id="Experiences[@i].Company" type="text" class="form-control mb-2" value="@se.Company" />
+                                                                <label class="form-label">Company Name</label>
+                                                            </div>
+                                                            
+                                                            
+
+                                                            <div class="form-floating">
+                                                                <input name="Experiences[@i].Position" id="Experiences[@i].Position" type="text" class="form-control mb-2" value="@se.Position" />
+                                                                <label class="form-label">Position Title</label>
+                                                            </div>
+                                                            
+                                                           
+
+                                                            <div class="form-floating">
+                                                                <input name="Experiences[@i].Location" id="Experiences[@i].Location" type="text" class="form-control mb-2" value="@se.Location" />
+                                                                <label class="form-label">Location (City, State)</label>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-lg-8">
+                                                            <div class="form-floating">
+                                                                <textarea data-val="true" class="form-control rDescription" 
+                                                                          data-val-maxlength="The field Description must be a string or array type with a maximum length of &#x27;1024&#x27;."
+                                                                          data-val-maxlength-max="1024"
+                                                                          data-val-minlength="The field Description must be a string or array type with a minimum length of &#x27;5&#x27;."
+                                                                          data-val-minlength-min="5"
+                                                                          id="Experiences[@i].Description" name="Experiences[@i].Description">@se.Description</textarea>
+                                                                <label class="form-label">Description</label>
+
+                                                            </div>
+                                                            
+
+                                                        </div>
+                                                    </div>
+                                                    <hr />
+                                                </div>
+
+                                        }
+
+                                    }
                                 }
                             </div>
-                            
                         </div>
                     </div>
                 </div>
@@ -91,70 +179,219 @@
 
 
 
-            </div>
-        @*<div class="form-group">
-            <label asp-for="ResumeName" class="form-label"></label>
-            <input asp-for="ResumeName" class="form-control" />
-            <span asp-validation-for="ResumeName" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="UserDisplayName" class="form-label"></label>
-            <input asp-for="UserDisplayName" class="form-control" />
-            <span asp-validation-for="UserDisplayName" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Summary" class="form-label"></label>
-            <input asp-for="Summary" class="form-control" />
-            <span asp-validation-for="Summary" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="SummaryName" class="form-label"></label>
-            <input asp-for="SummaryName" class="form-control" />
-            <span asp-validation-for="SummaryName" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Experience" class="form-label"></label>
-            <input asp-for="Experience" class="form-control" />
-            <span asp-validation-for="Experience" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="ExperienceName" class="form-label"></label>
-            <input asp-for="ExperienceName" class="form-control" />
-            <span asp-validation-for="ExperienceName" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Education" class="form-label"></label>
-            <input asp-for="Education" class="form-control" />
-            <span asp-validation-for="Education" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="EducationName" class="form-label"></label>
-            <input asp-for="EducationName" class="form-control" />
-            <span asp-validation-for="EducationName" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Skills" class="form-label"></label>
-            <input asp-for="Skills" class="form-control" />
-            <span asp-validation-for="Skills" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="SkillsName" class="form-label"></label>
-            <input asp-for="SkillsName" class="form-control" />
-            <span asp-validation-for="SkillsName" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Contact" class="form-label"></label>
-            <input asp-for="Contact" class="form-control" />
-            <span asp-validation-for="Contact" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="ContactName" class="form-label"></label>
-            <input asp-for="ContactName" class="form-control" />
-            <span asp-validation-for="ContactName" class="text-danger"></span>
-        </div>*@
+                @* Education Section *@
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Education
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
                             <div class="form-group">
-                                <input type="submit" value="Save" class="btn btn-primary" />
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <label asp-for="EducationName" class="form-label">Name Displayed on the Experience Section</label>
+                                        <input asp-for="EducationName" class="form-control" />
+                                        <span asp-validation-for="EducationName" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <a class="align-self-end" onclick="addEducation()"><i class="bi bi-plus-square-fill"></i></a>
+                                    </div>
+                                </div>
                             </div>
+                            <hr />
+                            <div id="EducationWrapper">
+                                @{
+                                    if (Model.Educations != null)
+                                    {
+                                        for (int i = 0; i < Model.Educations.Count; i++)
+                                        {
+                                            SingleEducation sedu = Model.Educations[i];
+                                            <div id="Education@(i)" class="form-group mb-2">
+
+                                                <div class="row mb-2">
+                                                    <div class="col  text-end">
+                                                        <a class="text-danger" onclick="deleteElement('Education@(i)')">Delete</a>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="row bg-light">
+
+                                                    <div class="col-lg-4">
+                                                        <div class="form-floating">
+
+
+                                                            <input type="date" name="Educations[@i].StartDate" id="Educations[@i].StartDate"
+                                                                   class="form-control mb-2"
+                                                                   value="@sedu.StartDate"
+                                                                   min="1930-01-01" max="">
+                                                            <label class="form-label">Start Date</label>
+                                                        </div>
+
+
+                                                        <div class="form-floating">
+                                                            <input type="date" name="Educations[@i].EndDate" id="Educations[@i].EndDate"
+                                                                   class="form-control mb-2"
+                                                                   value="@sedu.EndDate"
+                                                                   min="1930-01-01" max="">
+                                                            <label class="form-label">End Date or Current</label>
+                                                        </div>
+
+
+                                                        <div class="form-floating">
+                                                            <input name="Educations[@i].School" id="Educations[@i].School" type="text" class="form-control mb-2" value="@sedu.School" />
+                                                            <label class="form-label">School Name</label>
+                                                        </div>
+
+
+                                                        <div class="form-floating">
+                                                            <input name="Educations[@i].Degree" id="Educations[@i].Degree" type="text" class="form-control mb-2" value="@sedu.Degree" />
+                                                            <label class="form-label">Degree</label>
+                                                        </div>
+
+                                                        <div class="form-floating">
+                                                            <input name="Educations[@i].Location" id="Educations[@i].Location" type="text" class="form-control mb-2" value="@sedu.Location" />
+                                                            <label class="form-label">Location (City, State)</label>
+                                                        </div>
+                                                        <div class="form-floating">
+                                                            <input name="Educations[@i].GPA" id="Educations[@i].GPA" type="text" class="form-control mb-2" value="@sedu.GPA" />
+                                                            <label class="form-label">GPA</label>
+                                                        </div>
+
+                                                        </div>
+                                                        <div class="col-lg-8">
+                                                            <div class="form-floating">
+                                                                <textarea data-val="true" class="form-control rDescription"
+                                                                          data-val-maxlength="The field Description must be a string or array type with a maximum length of &#x27;1024&#x27;."
+                                                                          data-val-maxlength-max="1024"
+                                                                          data-val-minlength="The field Description must be a string or array type with a minimum length of &#x27;5&#x27;."
+                                                                          data-val-minlength-min="5"
+                                                                          id="Educations[@i].Description" name="Educations[@i].Description">@sedu.Description</textarea>
+                                                                <label class="form-label">Description</label>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                <hr />
+                                            </div>
+                                        }
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* End Education Section *@
+
+                @* Skill Section *@
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            Skill
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <label asp-for="SkillName" class="form-label">Name Displayed on the Skills Section</label>
+                                        <input asp-for="SkillName" class="form-control" />
+                                        <span asp-validation-for="SkillName" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <a class="align-self-end" onclick="addSkill()"><i class="bi bi-plus-square-fill"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div id="SkillWrapper">
+                                @{
+                                    if (Model.Skills != null)
+                                    {
+                                        for (int i = 0; i < Model.Skills.Count; i++)
+                                        {
+                                            SingleSkill sedu = Model.Skills[i];
+                                            <div id="Skill@(i)" class="form-group mb-2">
+                                                <div class="row bg-light">
+                                                    <div class="col-lg-1">
+                                                        <a class="text-danger" onclick="deleteElement('Skill@(i)')"><i class="bi bi-x-square"></i></a>
+                                                    </div>
+                                                    <div class="col-lg-3">
+
+                                                        <label class="form-label">Skill Name</label>
+                                                        <input name="Skills[@i].Name" id="Skills[@i].Name" type="text" class="form-control mb-2" value="@sedu.Name" />
+
+                                                    </div>
+
+                                                    <div class="col-lg-8">
+                                                        <label class="form-label">Skill Rating - From Left to Right - 0 to 100 Respectively</label>
+                                                        <div class="slidecontainer">
+                                                            <input name="Skills[@i].SkillRating" id="Skills[@i].Rating" type="range" class="slider mb-2" value="@sedu.SkillRating" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr />
+                                            </div>
+
+                                        }
+
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* End Skill Section *@
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSix">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                            Contact Information
+                        </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordiSixxample">
+                        <div class="accordion-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="ContactName" class="form-control" />
+                                        <label class="form-label">Contact Section Name</label>
+                                        <span asp-validation-for="ContactName" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="Contacts.Email" class="form-control" />
+                                        <label asp-for="Contacts.Email" class="form-label"></label>
+                                        <span asp-validation-for="Contacts.Email" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="Contacts.Phone" class="form-control" />
+                                        <label asp-for="Contacts.Phone" class="form-label"></label>
+                                        <span asp-validation-for="Contacts.Phone" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="Contacts.Linkedin" class="form-control" />
+                                        <label asp-for="Contacts.Linkedin" class="form-label"></label>
+                                        <span asp-validation-for="Contacts.Linkedin" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="Contacts.PersonalWebsite" class="form-control" />
+                                        <label asp-for="Contacts.PersonalWebsite" class="form-label"></label>
+                                        <span asp-validation-for="Contacts.PersonalWebsite" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="form-group mt-5">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
 </form>
     </div>
 </div>

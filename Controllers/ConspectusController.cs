@@ -92,11 +92,29 @@ namespace Resume.Controllers
             }
 
             var conspectus = await _context.Conspectus.FindAsync(id);
+
             if (conspectus == null)
             {
                 return NotFound();
             }
-            conspectus.Experiences = JsonSerializer.Deserialize<List<SingleExperience>>(conspectus.Experience);
+
+            if (conspectus.Experience != null)
+            {
+                conspectus.Experiences = JsonSerializer.Deserialize<List<SingleExperience>>(conspectus.Experience);
+            }
+            if (conspectus.Education != null)
+            {
+                conspectus.Educations = JsonSerializer.Deserialize<List<SingleEducation>>(conspectus.Education);
+            }
+            if (conspectus.Skill != null)
+            {
+                conspectus.Skills = JsonSerializer.Deserialize<List<SingleSkill>>(conspectus.Skill);
+            }
+            if (conspectus.Contact != null)
+            {
+                conspectus.Contacts = JsonSerializer.Deserialize<ContactInformation>(conspectus.Contact);
+            }
+
             return View(conspectus);
         }
 
@@ -105,24 +123,36 @@ namespace Resume.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,UId,ResumeName,UserDisplayName,Summary,SummaryName, Experiences, ExperienceName,Education,EducationName,Skills,SkillsName,Contact,ContactName")] Conspectus conspectus)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,UId,ResumeName,UserDisplayName,Summary,SummaryName, Experiences, Educations, Skills, Contacts, ExperienceName, EducationName, SkillName, ContactName")] Conspectus conspectus)
         {
             
             if (id != conspectus.Id)
             {
                 return NotFound();
             }
-            var test2 = conspectus.Experiences.Count; //Bingo
+            //var test2 = conspectus.Experiences.Count; //Bingo
             var test1 = conspectus.ResumeName; // works
             if (ModelState.IsValid)
             {
                 try
                 {
-                    if (conspectus.Experience != null)
+                    if (conspectus.Experiences != null)
                     {
                         conspectus.Experience = JsonSerializer.Serialize(conspectus.Experiences);
                     }
-                    
+                    if (conspectus.Educations != null)
+                    {
+                        conspectus.Education = JsonSerializer.Serialize(conspectus.Educations);
+                    }
+                    if (conspectus.Skills != null)
+                    {
+                        conspectus.Skill = JsonSerializer.Serialize(conspectus.Skills);
+                    }
+                    if (conspectus.Contacts != null)
+                    {
+                        conspectus.Contact = JsonSerializer.Serialize(conspectus.Contacts);
+                    }
+
                     _context.Update(conspectus);
                     await _context.SaveChangesAsync();
                 }
