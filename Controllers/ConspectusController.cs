@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Resume.Data;
 using Resume.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Data.Sqlite;
 using Resume.Areas.Identity.Data;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -54,6 +55,24 @@ namespace Resume.Controllers
                 return NotFound();
             }
 
+
+            if (conspectus.Experience != null)
+            {
+                conspectus.Experiences = JsonSerializer.Deserialize<List<SingleExperience>>(conspectus.Experience);
+            }
+            if (conspectus.Education != null)
+            {
+                conspectus.Educations = JsonSerializer.Deserialize<List<SingleEducation>>(conspectus.Education);
+            }
+            if (conspectus.Skill != null)
+            {
+                conspectus.Skills = JsonSerializer.Deserialize<List<SingleSkill>>(conspectus.Skill);
+            }
+            if (conspectus.Contact != null)
+            {
+                conspectus.Contacts = JsonSerializer.Deserialize<ContactInformation>(conspectus.Contact);
+            }
+
             return View(conspectus);
         }
 
@@ -68,19 +87,35 @@ namespace Resume.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,UId,ResumeName,UserDisplayName,Summary,SummaryName,Experience,ExperienceName,Education,EducationName,Skills,SkillsName,Contact,ContactName")] Conspectus conspectus)
+        public async Task<IActionResult> Create([Bind("Id,UId,ResumeName, ResumeSlug, UserDisplayName,Summary,SummaryName,Experience,ExperienceName,Education,EducationName,Skills,SkillsName,Contact,ContactName")] Conspectus conspectus)
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
-            
-            if (ModelState.IsValid)
-            {
-                conspectus.Id = Guid.NewGuid();
-                conspectus.UId = user.Id;
-                _context.Add(conspectus);
-                await _context.SaveChangesAsync();
+
+
+                if (ModelState.IsValid)
+                {
+                    conspectus.Id = Guid.NewGuid();
+                    conspectus.UId = user.Id;
+                    _context.Add(conspectus);
+
+                    try
+                    {
+                        await _context.SaveChangesAsync();
+                    return RedirectToAction("Edit", new { id = conspectus.Id });
+                }
+
+                    catch (Exception e)
+                    {
+                    ModelState.AddModelError(string.Empty, "Something went wrong, perhaps the resume name has already been taken. Please try a different resume name.");
+                    // ViewBag.Error = "Something went wrong, perhaps the resume name has already been taken. Please try a different resume name.";
+                    return View(conspectus);
+
+                    }
+                }
                 return RedirectToAction(nameof(Index));
-            }
-            return View(conspectus);
+                //return RedirectToAction(nameof(Edit(conspectus.Id)));
+
+
         }
 
         // GET: Conspectus/Edit/5
@@ -123,7 +158,7 @@ namespace Resume.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,UId,ResumeName,UserDisplayName,Summary,SummaryName, Experiences, Educations, Skills, Contacts, ExperienceName, EducationName, SkillName, ContactName")] Conspectus conspectus)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,UId,ResumeName, ResumeSlug, UserDisplayName,Summary,SummaryName, Experiences, Educations, Skills, Contacts, ExperienceName, EducationName, SkillName, ContactName")] Conspectus conspectus)
         {
             
             if (id != conspectus.Id)
@@ -167,7 +202,8 @@ namespace Resume.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction(nameof(Index));
+                return View(conspectus);
             }
             return View(conspectus);
         }

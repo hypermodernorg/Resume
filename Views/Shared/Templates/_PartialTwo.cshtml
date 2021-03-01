@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - test Resume</title>
+    <meta name="keywords" content="@ViewBag.Keywords" />
+    <meta name="Description" content="@ViewBag.Description" />
+    <link rel="stylesheet" href="~/css/custom.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/PartialTwo/resume.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+</head>
+
+    @*public class Conspectus
+    {
+        public Guid Id { get; set; } // Auto primary key by convention.
+        public Guid UId { get; set; } // Key to User
+
+        [Required]
+        [RegularExpression(@"^[a-zA-Z0-9\s]{3,40}$",ErrorMessage = "Alphanumeric characters and spaces only. Min three characters; max 40")]
+        public string ResumeName { get; set; }
+        public string ResumeSlug { get; set; }
+        public string UserDisplayName { get; set; }
+        public string Summary { get; set; }
+        public string SummaryName { get; set; }
+        public string Experience { get; set; } // Store as Json
+        public string Education { get; set; } // Store as Json
+        public string Skill { get; set; } // Store as Json
+
+        [NotMapped]
+        public List<SingleExperience> Experiences { get; set; }
+
+        [NotMapped]
+        public List<SingleEducation> Educations { get; set; }
+
+        [NotMapped]
+        public List<SingleSkill> Skills { get; set; }
+
+        [NotMapped]
+        public ContactInformation Contacts { get; set; }
+
+        public string ExperienceName { get; set; }
+        public string EducationName { get; set; }
+        public string SkillName { get; set; }
+
+        public string Contact { get; set; }
+        public string ContactName { get; set; }
+
+    }*@
+
+<body class="bgMain">
+    <div class="container-sm mt-5 mb-5">
+        <div class="row">
+
+            @*large screen*@
+            <div class="col-lg-4 d-none d-lg-block">
+                <div class="row userDisplayNameRow bgDark p-3">
+                    <div class="col-2 userDisplayNameCol text-end ">
+                        <h1 class="text-white fs-1 namePartialTwo align-text-bottom">@Model.UserDisplayName</h1>
+                    </div>
+                    <div class="col-10 userDisplayNameCol text-end ">
+                        <h1 class="text-white-50 fs-1 namePartialTwo">Full Stack Web Developer</h1>
+                    </div>
+                </div>
+                <div class="row pt-5 bgDark">
+                    <div class="col">
+                        <h3 class="text-white-50 text-center">@Model.SkillName</h3>
+                    </div>
+                </div>
+                @{
+                    foreach (var singleSkill in @Model.Skills)
+                    {
+                        var srWidth = singleSkill.SkillRating.ToString() + "%";
+                        <div class="row pt-2 bgDark">
+                            <div class="col-4">
+                                <p class="text-white text-end">@singleSkill.Name</p>
+                            </div>
+                            <div class="col-8">
+
+
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: @srWidth" aria-valuenow="@singleSkill.SkillRating" aria-valuemin="0" aria-valuemax="100">@srWidth</div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    }
+
+                }
+            </div>
+
+            @*Small screen*@
+ 
+            <div class="col-lg-4 d-lg-none">
+                <div class="row userDisplayNameRow bgAccent p-3">
+                    <div class="col-2 userDisplayNameCol text-end ">
+                        <h1 class="text-white fs-1 namePartialTwo align-text-bottom">@Model.UserDisplayName</h1>
+                    </div>
+                    <div class="col-10 userDisplayNameCol text-end ">
+                        <h1 class="text-white-50 fs-1 namePartialTwo">Full Stack Web Developer</h1>
+                    </div>
+                </div>
+                <div class="row pt-5 bgDark">
+                    <div class="col">
+                        <h3 class="text-white-50 text-center">@Model.SkillName</h3>
+                    </div>
+                </div>
+                @{
+                    foreach (var singleSkill in @Model.Skills)
+                    {
+                        var srWidth = singleSkill.SkillRating.ToString() + "%";
+                        <div class="row pt-2 bgDark">
+                            <div class="col-4">
+                                <p class="text-white text-end">@singleSkill.Name</p>
+                            </div>
+                            <div class="col-8">
+
+
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: @srWidth" aria-valuenow="@singleSkill.SkillRating" aria-valuemin="0" aria-valuemax="100">@srWidth</div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    }
+
+                }
+            </div>
+
+
+            <div class="col-lg-8 bgLight">
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+  
+</body>
+</html>
+
+
+
+
+
+

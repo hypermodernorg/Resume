@@ -43,7 +43,27 @@ namespace Resume
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.Use(async (context, next) =>
+            {
+                var url = context.Request.Path.Value;
 
+                // Rewrite to index
+                if (url.Contains("/hm/"))
+                {
+                    var slug = url.Split('/');
+
+                    if (slug[2] != null)
+                    {
+                        // rewrite and continue processing: Below is the matching url:
+                        // /hm/slug-to-match
+                        // <a asp-controller="hm" asp-action="@item.ResumeSlug"><i class="bi bi-file-text"></i> </a>
+                        context.Request.Path = "/hm/index/" + slug[2];
+                    }
+
+                }
+
+                await next();
+            });
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
@@ -60,8 +80,13 @@ namespace Resume
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
-                     name: "conspectus",
+                        name: "conspectus",
                     pattern: "{controller=Conspectus}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                        name: "hm",
+                     
+                    pattern: "{controller=hm}/{action=Index}/{id?}");
+                  
             });
         }
     }

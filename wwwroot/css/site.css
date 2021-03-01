@@ -40,3 +40,18 @@
 .rDescription {
     height: 350px !important;
 }
+
+
+.namePartialTwo {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
+.userDisplayNameRow {
+    
+}
+
+.userDisplayNameCol {
+
+  
+}

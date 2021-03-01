@@ -1,0 +1,52 @@
+﻿
+.rDescription {
+    height: 350px !important;
+}
+
+
+.namePartialTwo {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
+
+.userDisplayNameRow {
+    
+}
+
+.userDisplayNameCol {
+
+  
+}
+
+.bgMain {
+    background-color: #5E5D5C;
+}
+.bgAccent {
+    background-color: #E072A4;
+}
+.bgLight {
+    background-color: #C1E4DF;
+}
+.bgDark {
+    background-color: #28112B;
+}
+.bgMediam {
+    background-color: #453643
+}
+
+.progress {
+    background-color: transparent;
+    border-radius: unset;
+    height: 25px;
+}
+.progress-bar {
+    background-color: #C1E4DF;
+    color: black;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        background-color: lightblue;
+    }
+}

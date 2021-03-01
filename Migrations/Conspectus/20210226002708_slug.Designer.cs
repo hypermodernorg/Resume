@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Resume.Data;
 
 namespace Resume.Migrations.Conspectus
 {
     [DbContext(typeof(ConspectusContext))]
-    partial class ConspectusContextModelSnapshot : ModelSnapshot
+    [Migration("20210226002708_slug")]
+    partial class slug
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,9 +68,6 @@ namespace Resume.Migrations.Conspectus
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ResumeSlug")
-                        .IsUnique();
 
                     b.ToTable("Conspectus");
                 });

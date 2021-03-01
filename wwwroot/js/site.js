@@ -385,13 +385,20 @@ function addSkill() {
     e.appendChild(fg);
 }
 
-function addContact() {
-
-}
-
 function deleteElement(element) {
     var elementToRemove = document.getElementById(element);
 
     elementToRemove.remove();
+
+}
+
+function resumeSlug() {
+    var resumeName = document.getElementById('rname').value;
+    var rnlower = resumeName.toLowerCase().trim().replaceAll(' ', '-');
+
+
+    document.getElementById('rslug').value = rnlower;
+ 
+  
 
 }

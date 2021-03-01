@@ -1,0 +1,86 @@
+﻿<div class="container-xl mt-5">
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center">@Model.UserDisplayName</h1>
+            <hr />
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col">
+            <p class="text-center">
+                @{
+                    if (Model.Contacts.Email != null)
+                    {
+                        @*<i class="bi bi-envelope">  @Model.Contacts.Email.ToString()  -  </i>*@
+                        <i>@Model.Contacts.Email.ToString() -- </i>
+                    }
+                    if (Model.Contacts.Phone != null)
+                    {
+                        @*<i class="bi bi-telephone">  @Model.Contacts.Phone.ToString()  -  </i>*@
+                        <i>@Model.Contacts.Phone.ToString() -- </i>
+
+                    }
+                    if (Model.Contacts.Linkedin != null)
+                    {
+                        @*<i class="bi bi-linkedin">  @Model.Contacts.Linkedin.ToString()</i>*@
+                        <i>@Model.Contacts.Linkedin.ToString()</i>
+
+                    }
+                }
+            </p>
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            @{
+                if (Model.Summary != null)
+                {
+                    <p>
+                        @Model.Summary
+                    </p>
+                }
+
+            }
+        </div>
+        <hr />
+    </div>
+    <div class="row">
+        <div class="col">
+            @{
+                if (Model.Experiences != null)
+                {
+
+                    foreach (var experience in Model.Experiences)
+                    {
+                        <div class="row">
+                            <div class="col-2 fs-6">
+                                @experience.Position
+                            </div>
+                            <div class="col-2">
+                                @experience.Company
+                            </div>
+                            <div class="col-2">
+                                @experience.StartDate
+                            </div>
+                            <div class="col-2">
+                                @experience.EndDate
+                            </div>
+                            <div class="col-2">
+
+                            </div>
+                            <div class="col-2">
+                                @experience.Location
+                            </div>
+                            <hr />
+                        </div>
+                    }
+
+                }
+
+            }
+        </div>
+        <hr />
+    </div>
+</div>

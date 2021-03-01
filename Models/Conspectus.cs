@@ -12,14 +12,16 @@ using System.Text.Json.Serialization;
 
 namespace Resume.Models
 {
+    [Index(nameof(ResumeSlug), IsUnique = true)]
     public class Conspectus
     {
-
-
-
         public Guid Id { get; set; } // Auto primary key by convention.
         public Guid UId { get; set; } // Key to User
+
+        [Required]
+        [RegularExpression(@"^[a-zA-Z0-9\s]{3,40}$",ErrorMessage = "Alphanumeric characters and spaces only. Min three characters; max 40")]
         public string ResumeName { get; set; }
+        public string ResumeSlug { get; set; }
         public string UserDisplayName { get; set; }
         public string Summary { get; set; }
         public string SummaryName { get; set; }
