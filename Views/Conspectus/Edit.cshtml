@@ -371,8 +371,9 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-floating mb-3">
-                                        <input asp-for="Contacts.Phone" class="form-control" />
-                                        <label asp-for="Contacts.Phone" class="form-label"></label>
+                                        @*<input asp-for="Contacts.Phone" class="form-control" />*@
+                                        <input asp-for="Contacts.Phone" placeholder="123-456-7890" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" />
+                                        <label asp-for="Contacts.Phone" class="form-label">Phone: Format: ###-###-####</label>
                                         <span asp-validation-for="Contacts.Phone" class="text-danger"></span>
                                     </div>
                                     <div class="form-floating mb-3">

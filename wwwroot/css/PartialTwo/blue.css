@@ -8,7 +8,9 @@
     writing-mode: vertical-rl;
     transform: rotate(180deg);
 }
+.namePartialTwoB {
 
+}
 
 .userDisplayNameRow {
     
@@ -26,10 +28,11 @@
     background-color: #E072A4;
 }
 .bgLight {
-    background-color: #C1E4DF;
+    /*background-color: #C1E4DF;*/
+    background-color: #CECECE;
 }
 .bgDark {
-    background-color: #28112B;
+    background-color: #0E2E44;
 }
 .bgMediam {
     background-color: #453643
@@ -41,7 +44,7 @@
     height: 25px;
 }
 .progress-bar {
-    background-color: #C1E4DF;
+    background-color: #FFDBEB;
     color: black;
 }
 
@@ -49,4 +52,12 @@
     body {
         background-color: lightblue;
     }
+}
+
+.t-blue {
+    color: blue;
+
+}
+.t-purple {
+    color: purple;
 }

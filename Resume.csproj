@@ -39,6 +39,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="wwwroot\css\PartialTwo\blue.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\css\PartialTwo\purple.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Resume.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
