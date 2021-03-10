@@ -69,13 +69,17 @@ namespace Resume.Models
     [NotMapped]
     public class SingleExperience 
     {
+        [Required]
         public string Position { get; set; }
+        [Required]
         public string Company { get; set; }
+        [Required]
         public string StartDate { get; set; }
         public string EndDate { get; set; }
         public string Description { get; set; }
         public string Location { get; set; }
         public bool Enabled { get; set; }
+        public bool Current { get; set; }
         public int Order { get; set; }
     }
 
@@ -90,6 +94,7 @@ namespace Resume.Models
         public string Location { get; set; }
         public string GPA { get; set; }
         public bool Enabled { get; set; }
+        public bool Current { get; set; }
         public int Order { get; set; }
     }
 

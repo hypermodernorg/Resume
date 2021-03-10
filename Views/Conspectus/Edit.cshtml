@@ -98,15 +98,45 @@
                                     {
                                         for (int i = 0; i < Model.Experiences.Count; i++)
                                         {
+                                            var currentCheck = "";
+                                            var edDisable = "";
                                             SingleExperience se = Model.Experiences[i];
                                                 <div id="Experience@(i)" class="form-group mb-2">
 
                                                     <div class="row mb-2">
-                                                        <div class="col  text-end">
+                                                        <div class="col-8  text-start">
+                                                            @{
+                                                                if (se.Current)
+                                                                {
+                                                                    currentCheck = "checked";
+                                                                    edDisable = "disabled";
+                                                                }
+
+                                                            }
+                                                            <div class="form-check">
+
+                                                                @Html.CheckBoxFor(model => model.Experiences[i].Current,
+                                                                  new Dictionary<string, object>{
+                                                                     {"onclick",$"Current('Experiences[{i}].EndDate', 'CurrentCheck[{i}]')"},
+                                                                      {"id", $"CurrentCheck[{i}]" }
+                                                                  })
+
+
+
+
+                                                                @*@Html.CheckBoxFor(model => model.Experiences[i].Current)*@
+                                                                @*<input asp-for="@se.Current">*@
+                                                                @*<input name="Experiences[@i].Current" onclick="Current('Experiences[@i].EndDate', 'CurrentCheck[@i]')" class="form-check-input" type="checkbox" id="CurrentCheck[@i]" @currentCheck>*@
+                                                                <label class="form-check-label" for="CurrentCheck[@i]">
+                                                                    Current Employment?
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4  text-end">
                                                             <a class="text-danger" onclick="deleteElement('Experience@(i)')">Delete</a>
                                                         </div>
 
-                                                    </div>
+                                                        </div>
                                                     <div class="row bg-light">
      
                                                         <div class="col-lg-4">
@@ -125,7 +155,7 @@
                                                                 <input type="date" name="Experiences[@i].EndDate" id="Experiences[@i].EndDate"
                                                                        class="form-control mb-2"
                                                                        value="@se.EndDate"
-                                                                       min="1930-01-01" max="">
+                                                                       min="1930-01-01" max="" @edDisable>
                                                                 <label class="form-label">End Date or Current</label>
                                                             </div>
                                                             
@@ -210,10 +240,40 @@
                                         for (int i = 0; i < Model.Educations.Count; i++)
                                         {
                                             SingleEducation sedu = Model.Educations[i];
+                                            var currentCheck = "";
+                                            var edDisable = "";
                                             <div id="Education@(i)" class="form-group mb-2">
 
                                                 <div class="row mb-2">
-                                                    <div class="col  text-end">
+                                                    <div class="col-8  text-start">
+                                                        @{
+                                                            if (sedu.Current)
+                                                            {
+                                                                currentCheck = "checked";
+                                                                edDisable = "disabled";
+                                                            }
+
+                                                        }
+                                                        <div class="form-check">
+
+                                                            @Html.CheckBoxFor(model => model.Educations[i].Current,
+                                                              new Dictionary<string, object>{
+                                                                 {"onclick",$"Current('Educations[{i}].EndDate', 'CurrentCheck[{i}]edu')"},
+                                                                  {"id", $"CurrentCheck[{i}]edu" }
+                                                              })
+
+
+
+
+                                                            @*@Html.CheckBoxFor(model => model.Experiences[i].Current)*@
+                                                            @*<input asp-for="@se.Current">*@
+                                                            @*<input name="Experiences[@i].Current" onclick="Current('Experiences[@i].EndDate', 'CurrentCheck[@i]')" class="form-check-input" type="checkbox" id="CurrentCheck[@i]" @currentCheck>*@
+                                                            <label class="form-check-label" for="CurrentCheck[@i]">
+                                                                Current Student?
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-4  text-end">
                                                         <a class="text-danger" onclick="deleteElement('Education@(i)')">Delete</a>
                                                     </div>
 
@@ -316,6 +376,7 @@
                                         for (int i = 0; i < Model.Skills.Count; i++)
                                         {
                                             SingleSkill sedu = Model.Skills[i];
+
                                             <div id="Skill@(i)" class="form-group mb-2">
                                                 <div class="row bg-light">
                                                     <div class="col-lg-1">

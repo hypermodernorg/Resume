@@ -136,6 +136,7 @@ namespace Resume.Controllers
             if (conspectus.Experience != null)
             {
                 conspectus.Experiences = JsonSerializer.Deserialize<List<SingleExperience>>(conspectus.Experience);
+                var test = conspectus.Experiences[0].Current;
             }
             if (conspectus.Education != null)
             {
@@ -173,7 +174,9 @@ namespace Resume.Controllers
                 {
                     if (conspectus.Experiences != null)
                     {
+                      
                         conspectus.Experience = JsonSerializer.Serialize(conspectus.Experiences);
+                        var test = conspectus.Experiences[0].Current;
                     }
                     if (conspectus.Educations != null)
                     {

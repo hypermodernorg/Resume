@@ -1,0 +1,25 @@
+﻿.bgMain {
+    background-color: #5E5D5C;
+}
+.bgAccent {
+    background-color: #E072A4;
+}
+.bgLight {
+    background-color: #CECECE;
+}
+.bgDark {
+    background-color: #28112B;
+}
+.bgMediam {
+    background-color: #453643
+}
+.progress {
+    background-color: transparent;
+    border-radius: unset;
+    height: 25px;
+}
+.progress-bar {
+    background-color: #C1E4DF;
+    color: black;
+}
+

@@ -14,18 +14,42 @@
 
     var rw2 = document.createElement("div");
     rw2.classList.add('row', 'mb-2');
+    var col1 = document.createElement("div");
+    col1.classList.add('col-8');
     var col2 = document.createElement('div');
-    col2.classList.add('col', 'text-end');
+    col2.classList.add('col-4', 'text-end');
+
+    var formDiv = document.createElement("div");
+    formDiv.classList.add('form-check');
 
     // Remove element column
-    var cl1 = document.createElement("div");
-    cl1.classList.add('col-lg-1');
+    //var cl1 = document.createElement("div");
+    //cl1.classList.add('col-6');
+
+    var checked = document.createElement('input');
+    var checkedlbl = document.createElement('label');
+    checkedlbl.classList.add("form-check-label");
+    checkedlbl.innerText = " Current Employment?";
+
+    checked.setAttribute("type", "checkbox");
+    checked.id = "checked" + i;
+    checked.setAttribute("onclick", `Current('Experiences[${i}].EndDate', 'checked${i}')`);
+    checked.classList.add("pe-1");
+
+
+
     var aRemove = document.createElement("a");
     aRemove.setAttribute('onclick', `deleteElement('${fg.id}')`);
     aRemove.classList.add('text-danger');
     aRemove.innerText = "Delete";
-    cl1.appendChild(aRemove);
+
+
+    formDiv.appendChild(checked);
+    formDiv.appendChild(checkedlbl);
+    col1.appendChild(formDiv);
+
     col2.appendChild(aRemove);
+    rw2.appendChild(col1);
     rw2.appendChild(col2);
 
     // Start and End Date, Company Name, and Position Title Columns
@@ -165,20 +189,60 @@ function addEducation() {
     rw.classList.add('row');
     rw.classList.add('bg-light');
 
-    var rw2 = document.createElement("div");
-    rw2.classList.add('row', 'mb-2');
-    var col2 = document.createElement('div');
-    col2.classList.add('col', 'text-end');
+    //var rw2 = document.createElement("div");
+    //rw2.classList.add('row', 'mb-2');
+    //var col2 = document.createElement('div');
+    //col2.classList.add('col', 'text-end');
 
-    // Remove element column
-    var cl1 = document.createElement("div");
-    cl1.classList.add('col-lg-1');
+    //// Remove element column
+    //var cl1 = document.createElement("div");
+    //cl1.classList.add('col-lg-1');
     var aRemove = document.createElement("a");
     aRemove.setAttribute('onclick', `deleteElement('${fg.id}')`);
     aRemove.classList.add('text-danger');
     aRemove.innerText = "Delete";
-    cl1.appendChild(aRemove);
+    //cl1.appendChild(aRemove);
+    //col2.appendChild(aRemove);
+    //rw2.appendChild(col2);
+
+    var rw2 = document.createElement("div");
+    rw2.classList.add('row', 'mb-2');
+    var col1 = document.createElement("div");
+    col1.classList.add('col-8');
+    var col2 = document.createElement('div');
+    col2.classList.add('col-4', 'text-end');
+
+    var formDiv = document.createElement("div");
+    formDiv.classList.add('form-check');
+
+    // Remove element column
+    //var cl1 = document.createElement("div");
+    //cl1.classList.add('col-6');
+
+    var checked = document.createElement('input');
+    var checkedlbl = document.createElement('label');
+    checkedlbl.classList.add("form-check-label");
+    checkedlbl.innerText = " Current Student?";
+
+    checked.setAttribute("type", "checkbox");
+    checked.id = "checkededu" + i;
+    checked.setAttribute("onclick", `Current('Educations[${i}].EndDate', 'checkededu${i}')`);
+    checked.classList.add("pe-1");
+
+
+
+    var aRemove = document.createElement("a");
+    aRemove.setAttribute('onclick', `deleteElement('${fg.id}')`);
+    aRemove.classList.add('text-danger');
+    aRemove.innerText = "Delete";
+
+
+    formDiv.appendChild(checked);
+    formDiv.appendChild(checkedlbl);
+    col1.appendChild(formDiv);
+
     col2.appendChild(aRemove);
+    rw2.appendChild(col1);
     rw2.appendChild(col2);
 
    // Start and End Date, School Name, and Degree column
@@ -400,5 +464,22 @@ function resumeSlug() {
     document.getElementById('rslug').value = rnlower;
  
   
+
+}
+
+function Current(edid,  ccid) {
+
+    var checked1 = document.getElementById(ccid);
+  
+    //var checked1 = document.querySelector('.messageCheckbox:checked').value;
+    var endDate = document.getElementById(edid);
+    if (checked1.checked) {
+        endDate.disabled = true;
+        //alert(checked1);
+    }
+    else {
+        endDate.disabled = false;
+        //alert(checked1);
+    }
 
 }
