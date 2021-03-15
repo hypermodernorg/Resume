@@ -55,3 +55,22 @@
 
   
 }
+
+.carousel-item {
+    max-height: 500px;
+
+}
+
+.cimage {
+    object-fit: cover;
+    max-height: 450px;
+}
+
+#carouselExampleCaptions {
+}
+
+.body-bg {
+    background: url('../images/chess.jpg');
+    background-size: cover;
+}
+

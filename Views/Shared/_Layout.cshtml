@@ -1,63 +1,100 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Resume</title>
-    <meta name="keywords" content="@ViewBag.Keywords" />
-    <meta name="Description" content="@ViewBag.Description" />
+    <title>@ViewData["Title"] - Lander's Resume</title>
     <link rel="stylesheet" href="~/css/custom.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 
-<body class="bg-darkest">
-    <div class="container-fluid">
+@{
+    // Border top depending on if view is Search
+    var topBorder = "";
+    if (ViewBag.IsSearch == true)
+    {
+        topBorder = "rounded-top-lg";
+    }
+    else
+    {
+        topBorder = "border-top-left";
+    }
+}
+<body class="body-bg">
+    <div class="container-xxl mt-5">
         <div class="row">
-            <div class="col">
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
-                    <a class="navbar-brand text-uppercase fw-bolder" href="#">Lander's Resume</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                            </li>
-                        </ul>
-                        <partial name="_LoginPartial" />
+            <div class="col p-0 bg-light @topBorder">
+                <div class="row g-0">
+                    <div class="col">
+                        <nav class="navbar navbar-light navbar-expand-lg pt-3 pb-3">
+                            <a class="navbar-brand" href="#">BIBLEAPP</a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarColor01">
+                                <ul class="navbar-nav me-auto">
+                                    <li class="nav.item active">
+                                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="ImportBible" asp-controller="Registers" asp-action="Search">Search</a>
+                                    </li>
+                                </ul>
+                                <partial name="_LoginPartial" />
+                            </div>
+                        </nav>
                     </div>
-                </nav>
+                </div>
+
+                @if (ViewBag.IsHome == true)
+                {
+                    <div class="row g-0">
+                        <div class="col">
+                            <partial name="_CarouselPartial" />
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+            @if (ViewBag.IsHome == true)
+            {
+                <partial name="_SocialPartial" />
+            }
+
+
+        </div>
+    </div>
+
+    @*@if (ViewBag.IsHome == true)
+    {
+        <div class="container-lg p-0">
+            <div class="row">
+                <div class="col bg-light pt-5">
+                    <h1 class="text-center">Welcome</h1>
+                </div>
             </div>
         </div>
-  
-        @{ var homeClass = ""; }
-        @if (ViewBag.IsHome == null) { homeClass = "bg-light p-4"; }
-
-        <main role="main" class="@homeClass">
-            @RenderBody()
-        </main>
+    }*@
 
 
-        <main role="main" class="">
 
+    <div class="container-lg main-area">
 
-            @RenderBody()
-        </main>
-        <partial name="_FooterLinksPartial" />
-        <partial name="_FooterPartial" />
+            
+                    @RenderBody()
+          
     </div>
+
+
+    <partial name="_Footerlinkspartial" />
+    <partial name="_Footerpartial" />
 
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
+
 </html>

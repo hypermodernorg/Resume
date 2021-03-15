@@ -21,6 +21,7 @@ $gray-700: #495057 !default;
 $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black: #000 !default;
+$siconcolor: $gray-400;
 
 // fusv-disable
 $grays: ( "100": $gray-100, "200": $gray-200, "300": $gray-300, "400": $gray-400, "500": $gray-500, "600": $gray-600, "700": $gray-700, "800": $gray-800, "900": $gray-900 ) !default;
@@ -42,14 +43,14 @@ $brown: #D3BFAB !default;
 $colors: ( "blue": $blue, "indigo": $indigo, "purple": $purple, "pink": $pink, "red": $red, "orange": $orange, "yellow": $yellow, "green": $green, "teal": $teal, "cyan": $cyan, "white": $white, "gray": $gray-600, "gray-dark": $gray-800, "brown": $brown) !default;
 // scss-docs-end colors-map
 
-$primary: #3AAFA9 !default;
-$secondary: #2A7A78 !default;
-$success: $green !default;
-$info: $brown !default;
+$primary: #B0A295 !default;
+$secondary: #938E93 !default;
+$success: rgb(85, 122, 149) !default;
+$info: rgb(115, 149, 174) !default;
 $warning: $yellow !default;
 $danger: $red !default;
-$light: #DEF2F1 !default;
-$dark: #17242A !default;
+$light: #FFFFFF !default;
+$dark: #5D5C60 !default;
 $darkest: #000000 !default;
 
 // scss-docs-start theme-colors-map
@@ -66,6 +67,92 @@ $theme-colors: ( "primary": $primary, "secondary": $secondary, "success": $succe
     background-color: rgba(255, 255, 255, .50);
     backdrop-filter: blur(5px);
 }
+
+$border-radius: .2.5rem !default;
+$border-radius-lg: .4rem !default;
+$border-radius-sm: .2rem !default;
+// Border Radius
+.rounded-top-lg {
+    border-top-right-radius: $border-radius-lg !important;
+    border-top-left-radius: $border-radius-lg !important;
+}
+
+.rounded-bottom-lg {
+    border-bottom-right-radius: $border-radius-lg !important;
+    border-bottom-left-radius: $border-radius-lg !important;
+}
+.border-top-left {
+    border-top-left-radius: $border-radius-lg !important;
+}
+
+//// Social Icon Strip ////
+@media screen and (min-width: 994px) {
+    #social-collapse {
+        background-color: $black !important;
+        border-top-right-radius: $border-radius-lg !important;
+        border: none;
+    }
+
+    .s-icon {
+        color: $siconcolor;
+        font-size: 1.75em;
+        display: block;
+        padding-top: .75em;
+        padding-bottom: .75em;
+    }
+
+    .cimage {
+        object-fit: cover;
+        max-height: 450px;
+        background-color: $white !important;
+    }
+
+    .fpimage {
+        object-fit: cover;
+        max-height: 350px;
+        width: 100%;
+    }
+
+    .border-top-right {
+        border-top-right-radius: 0px !important;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    #social-collapse {
+        background-color: $black !important;
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .s-icon {
+        color: $siconcolor;
+        font-size: 1em;
+        padding: .5em;
+        vertical-align: middle;
+    }
+
+    .cimage {
+        object-fit: cover;
+        max-height: 450px;
+        background-color: $white !important;
+    }
+
+    .fpimage {
+        object-fit: cover;
+        max-height: 350px;
+        width: 100%;
+    }
+
+    .border-top-right {
+        border-top-right-radius: $border-radius-lg !important;
+    }
+}
+
+
+
+
 
 // 2: Import Bootstrap 
 @import "../scss/bootstrap.scss";

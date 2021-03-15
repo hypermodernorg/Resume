@@ -3,10 +3,37 @@
 }
 
 @*<div class="container">*@
-    <div class="row">
-        <div class="col-lg-6 bg-primary p-5"><h1>Hypermodern's</h1></div>
-        <div class="col-lg-6 bg-secondary p-5"><h1>Quickstart</h1></div>
-
+<div class="row">
+    <div class="col-lg-6 bg-primary p-5">
+        <h2>The Why of Lander's Resume</h2>
+        <p class="fs-5">Lander’s Resume started out simply as my (Lander’s) resume. While putting the resume together I realized that not only could I send you this resume, I could build an entire resume application to not only tell you what I claim to be true of my skills, but to show you. Lander’s Resume, therefore turned out to be a web application to showcase my development skills for potential employers. I chose web development because of the many technologies that must come together to make a website. This website, for example, is built with ASP.NET CORE, C#, vanilla Javascript, CSS, SCSS, HTML, SQL, and many related frameworks such as Bootstrap, Entity Framework Core, JSON, and Identity, among others. My hope is that this website will demonstrate you that I can work with many programming languages and technologies at once to build a product from start to finish.</p>
     </div>
+
+    <div class="col-lg-6 bg-success p-5">
+        <h2>What is Lander's Resume?</h2>
+        <p class="fs-5">Lander’s Resume is a web application that allows users to store their resume details into a database, and then choose an HTML theme to display their resume to employers. Users can have multiple resume’s each displayed with different themes. For instance, users can create a resume for software development, and then tailor another resume to a management position. Currently only one theme is available, but I’ll be adding more as time permits.</p>
+    </div>
+
+    <div class="col-lg-6 bg-info p-5">
+        <h2>Design</h2>
+        <p class="fs-5">This website's design makes heavy use of the Bootstrap 5's CSS/Javascript framework. This allows easy assess to responsiveness and transitions from small phones to large desktop screens. It also provides easy styling of input and other form elements. My implimentation of Bootstrap 5 allows me to change and compile custom CSS from SCSS on the fly without changing the core Bootstrap 5 codebase.</p>
+    </div>
+
+    <div class="col-lg-6 bg-secondary p-5">
+        <h2>Structure</h2>
+        <p class="fs-5">ASP.NET Core, C#, and two SQLITE databases are the heart of Lander’s resume. One of the SQLITE database stores the user’s login information. The code accessing this database follows a one model and controller per page approach. The second database stores the user’s resume information and adheres to an MVC code structure. The purpose of having two coding structures in one application was simply to keep future compatibility between Microsoft Identity and this application. Because Microsoft Identity elected not to support MVC scaffolding, and because it tends to have many updates, I decided not to heavily deviate from their coding structure. At the same time, I prefer the MVC structure and wanted the benefits of  one controller and model for many views for the resume database.</p>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col p-5 bg-light">
+        <h1>About Lander</h1>
+        <p class="fs-5">
+            I have enjoyed programming for the past 20 plus years beginning with basic in college, to perl in the early days of online content management systems, then php as php became the standard coding language for interactive web pages, to my current work with ASP.NET Core. Throughout the years I've developed full stack experience dealing with each of the processes and technologies required for web development from coding to web server configuration.
+        </p>
+    </div>
+
+
+</div>
 
 @*</div>*@
