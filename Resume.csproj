@@ -7,6 +7,8 @@
 
   <ItemGroup>
     <Content Remove="compilerconfig.json" />
+    <Content Remove="wwwroot\lib\particles.js-master\app.js" />
+    <Content Remove="wwwroot\lib\particles.js-master\particles.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,6 +38,21 @@
 
   <ItemGroup>
     <None Include="compilerconfig.json" />
+    <None Include="wwwroot\lib\particles.js-master\.gitignore" />
+    <None Include="wwwroot\lib\particles.js-master\app.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\lib\particles.js-master\demo\js\app.js" />
+    <None Include="wwwroot\lib\particles.js-master\demo\js\lib\stats.js" />
+    <None Include="wwwroot\lib\particles.js-master\LICENSE.md" />
+    <None Include="wwwroot\lib\particles.js-master\particles.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\lib\particles.js-master\particles.min.js" />
+    <None Include="wwwroot\lib\particles.js-master\particles.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\lib\particles.js-master\README.md" />
     <None Include="wwwroot\scss\forms\_floating-labels.scss" />
     <None Include="wwwroot\scss\forms\_form-check.scss" />
     <None Include="wwwroot\scss\forms\_form-control.scss" />
@@ -87,6 +104,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\css\PartialTwo\main.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\particles.js-master\bower.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\particles.js-master\package.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

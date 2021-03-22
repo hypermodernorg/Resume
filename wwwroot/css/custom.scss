@@ -43,6 +43,13 @@ $brown: #D3BFAB !default;
 $colors: ( "blue": $blue, "indigo": $indigo, "purple": $purple, "pink": $pink, "red": $red, "orange": $orange, "yellow": $yellow, "green": $green, "teal": $teal, "cyan": $cyan, "white": $white, "gray": $gray-600, "gray-dark": $gray-800, "brown": $brown) !default;
 // scss-docs-end colors-map
 
+
+$cbrightOdd: #F9C784 !default;
+$cbrightNorm: #BDD4E7 !default;
+$cmedium: #8693AB !default;
+$cgray: #637074 !default;
+$cdark: #212227 !default;
+
 $primary: #B0A295 !default;
 $secondary: #938E93 !default;
 $success: rgb(85, 122, 149) !default;
@@ -53,13 +60,19 @@ $light: #FFFFFF !default;
 $dark: #5D5C60 !default;
 $darkest: #000000 !default;
 
+
+
+
+
+
 // scss-docs-start theme-colors-map
-$theme-colors: ( "primary": $primary, "secondary": $secondary, "success": $success, "info": $info, "warning": $warning, "danger": $danger, "light": $light, "dark": $dark, "darkest": $darkest ) !default;
+$theme-colors: ( "cbrightOdd": $cbrightOdd, "cbrightNorm": $cbrightNorm, "cmedium": $cmedium, "cgray": $cgray, "cdark": $cdark, "primary": $primary, "secondary": $secondary, "success": $success, "info": $info, "warning": $warning, "danger": $danger, "light": $light, "dark": $dark, "darkest": $darkest ) !default;
 // scss-docs-end theme-colors-map 
 
 // Body
 .body-bg-image {
-    background: url('../images/brownwood.jpg') no-repeat center center fixed;
+    //background: url('../images/hexTeal.png') no-repeat center center fixed;
+    background-color: $cmedium;
     background-size: cover;
 }
 
@@ -86,15 +99,15 @@ $border-radius-sm: .2rem !default;
 }
 
 //// Social Icon Strip ////
-@media screen and (min-width: 994px) {
+@media screen and (min-width: 960px) {
     #social-collapse {
-        background-color: $black !important;
+        background-color: $cdark !important;
         border-top-right-radius: $border-radius-lg !important;
         border: none;
     }
 
     .s-icon {
-        color: $siconcolor;
+        color: $cbrightNorm;
         font-size: 1.75em;
         display: block;
         padding-top: .75em;
@@ -120,14 +133,14 @@ $border-radius-sm: .2rem !default;
 
 @media screen and (max-width: 992px) {
     #social-collapse {
-        background-color: $black !important;
+        background-color: $cdark !important;
         text-align: center;
         padding-top: 10px;
         padding-bottom: 10px;
     }
 
     .s-icon {
-        color: $siconcolor;
+        color: $cbrightNorm;
         font-size: 1em;
         padding: .5em;
         vertical-align: middle;
@@ -150,8 +163,13 @@ $border-radius-sm: .2rem !default;
     }
 }
 
+// scss-docs-start grid-breakpoints
+$grid-breakpoints: ( xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px ) !default;
+// scss-docs-end grid-breakpoints
 
-
+// scss-docs-start container-max-widths
+$container-max-widths: ( sm: 540px, md: 720px, lg: 960px, xl: 1140px, xxl: 1320px ) !default;
+// scss-docs-end container-max-widths
 
 
 // 2: Import Bootstrap 
