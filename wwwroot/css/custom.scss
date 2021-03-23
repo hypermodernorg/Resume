@@ -50,8 +50,10 @@ $cmedium: #8693AB !default;
 $cgray: #637074 !default;
 $cdark: #212227 !default;
 
-$primary: #B0A295 !default;
-$secondary: #938E93 !default;
+//$primary: #B0A295 !default;
+$primary: $cmedium !default;
+// $secondary: #938E93 !default;
+$secondary: $cmedium !default;
 $success: rgb(85, 122, 149) !default;
 $info: rgb(115, 149, 174) !default;
 $warning: $yellow !default;
@@ -163,6 +165,17 @@ $border-radius-sm: .2rem !default;
     }
 }
 
+
+.form-control {
+    margin-bottom: 20px;
+}
+
+div.alternate > div:nth-of-type(odd) {
+    background: $gray-200;
+}
+div.alternate > div:nth-of-type(even) {
+    background: $gray-300;
+}
 // scss-docs-start grid-breakpoints
 $grid-breakpoints: ( xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px ) !default;
 // scss-docs-end grid-breakpoints

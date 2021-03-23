@@ -36,7 +36,7 @@
                                 @*<label for="basic-url" class="form-label">Your vanity URL</label>*@
                                 <label asp-for="ResumeSlug" class="form-label mt-2">The resume name above will be converted to the url slug below. This url is what you give employers to access your resume.</label>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon3">https://localhost/</span>
+                                    <span class="form-control">https://localhost/</span>
                                     @*<input asp-for="ResumeName" class="form-control">*@
                                     <input asp-for="ResumeSlug" id="rslug" type ="text" class="form-control" readonly />
                                 </div>
@@ -369,7 +369,7 @@
                                 </div>
                             </div>
                             <hr />
-                            <div id="SkillWrapper">
+                            <div id="SkillWrapper" class="alternate">
                                 @{
                                     if (Model.Skills != null)
                                     {
@@ -377,8 +377,8 @@
                                         {
                                             SingleSkill sedu = Model.Skills[i];
 
-                                            <div id="Skill@(i)" class="form-group mb-2">
-                                                <div class="row bg-light">
+                                            <div id="Skill@(i)" class="form-group p-3">
+                                                <div class="row">
                                                     <div class="col-lg-1">
                                                         <a class="text-danger" onclick="deleteElement('Skill@(i)')"><i class="bi bi-x-square"></i></a>
                                                     </div>
@@ -392,11 +392,11 @@
                                                     <div class="col-lg-8">
                                                         <label class="form-label">Skill Rating - From Left to Right - 0 to 100 Respectively</label>
                                                         <div class="slidecontainer">
-                                                            <input name="Skills[@i].SkillRating" id="Skills[@i].Rating" type="range" class="slider mb-2" value="@sedu.SkillRating" />
+                                                            <input name="Skills[@i].SkillRating" id="Skills[@i].Rating" type="range" class="slider mb-2 bg-cbrightOdd" value="@sedu.SkillRating" />
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <hr />
+                                             
                                             </div>
 
                                         }
