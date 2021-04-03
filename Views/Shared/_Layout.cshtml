@@ -3,9 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="@ViewData["Description"]">
+    <meta name="keywords" content="@ViewData["Keywords"]">
     <title>@ViewData["Title"] - Lander's Resume</title>
-    <link rel="stylesheet" href="~/css/custom.css" />
+    <link rel="stylesheet" href="~/css/customv2.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 
@@ -27,6 +30,8 @@
 }
 @*<body class="body-bg-image">*@
 <body class="">
+
+
     <div id="particles-js"></div>
     <div class="container-xxl pt-5">
         <div class="row">
@@ -43,10 +48,13 @@
                                     <li class="nav.item active">
                                         <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                                     </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" asp-area="ImportBible" asp-controller="Registers" asp-action="Search">Search</a>
+                                    <li class="nav.item active">
+                                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About Lander</a>
                                     </li>
+
+                                    @*<li class="nav-item">
+                                        <a class="nav-link" asp-area="ImportBible" asp-controller="Registers" asp-action="Search">Search</a>
+                                    </li>*@
                                 </ul>
                                 <partial name="_LoginPartial" />
                             </div>
@@ -103,7 +111,7 @@
 
 
 
-   
+
 
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

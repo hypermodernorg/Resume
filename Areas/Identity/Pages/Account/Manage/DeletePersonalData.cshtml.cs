@@ -1,6 +1,8 @@
 ﻿using Resume.Areas.Identity.Data;
+using Resume.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System;
@@ -14,15 +16,18 @@ namespace Resume.Areas.Identity.Pages.Account.Manage
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<DeletePersonalDataModel> _logger;
+        private readonly ConspectusContext _context;
 
         public DeletePersonalDataModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            ILogger<DeletePersonalDataModel> logger)
+            ILogger<DeletePersonalDataModel> logger,
+            ConspectusContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
+            _context = context;
         }
 
         [BindProperty]
@@ -66,6 +71,19 @@ namespace Resume.Areas.Identity.Pages.Account.Manage
                     return Page();
                 }
             }
+
+
+
+            //var query = $"DELETE FROM Conspectus WHERE UId = '{user.Id.ToString().ToUpper()}'";
+
+            //await _context.Conspectus.FromSqlRaw(query).ToListAsync();
+
+
+            var query = $"SELECT * FROM Conspectus WHERE UId = '{user.Id.ToString().ToUpper()}'";
+            var resumesToDelete = await _context.Conspectus.FromSqlRaw(query).ToListAsync();
+            _context.Conspectus.RemoveRange(resumesToDelete);
+            await _context.SaveChangesAsync();
+
 
             var result = await _userManager.DeleteAsync(user);
             var userId = await _userManager.GetUserIdAsync(user);

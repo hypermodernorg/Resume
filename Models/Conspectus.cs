@@ -23,6 +23,9 @@ namespace Resume.Models
         public string ResumeName { get; set; }
         public string ResumeSlug { get; set; }
         public string UserDisplayName { get; set; }
+        [Display(Name = "Job Apiration or Job Title Desired", Description = "testgbfxfg gfsgggfd  fdgssdgf")]
+     
+        public string UserAspiration { get; set; }
         public string Summary { get; set; }
         public string SummaryName { get; set; }
         public string Experience { get; set; } // Store as Json

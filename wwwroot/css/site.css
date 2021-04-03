@@ -1,9 +1,20 @@
-﻿/*Slider*/
+﻿.aboutImage {
+ 
+    max-width: 300px;
+    height: auto;
+
+}
+
+
+
+/*Slider*/
 .slidecontainer {
     width: 100%; /* Width of the outside container */
 }
 
-
+.cardHeight {
+    max-height: 200px;
+}
 /* The slider itself */
 .slider {
     -webkit-appearance: none; /* Override default CSS styles */

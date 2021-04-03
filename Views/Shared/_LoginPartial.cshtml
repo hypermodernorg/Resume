@@ -21,15 +21,24 @@
             <a id="navbarDropdown" href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" title="Manage" aria-expanded="false">@UserManager.GetUserName(User)</a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a id="navbarDropdown" class="dropdown-item" role="button" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Account</a></li>
-                @if (roleviewcheck.Succeeded) //AuthorizeAsync(User, "ViewRoles"))
+                @*@if (roleviewcheck.Succeeded) //AuthorizeAsync(User, "ViewRoles"))
+        {
+            <li><a class="dropdown-item" asp-area="Identity" asp-page="/Admin/Roles/Index" title="Roles">View Roles</a></li>
+        }
+        @if (userviewcheck.Succeeded)
+        {
+            <li><a class="dropdown-item" asp-area="Identity" asp-page="/Admin/Users/Index" title="Roles">View Users</a></li>
+        }*@
+                @if (User.Identity.Name == "lcompton") //AuthorizeAsync(User, "ViewRoles"))
                 {
                     <li><a class="dropdown-item" asp-area="Identity" asp-page="/Admin/Roles/Index" title="Roles">View Roles</a></li>
                 }
-                @if (userviewcheck.Succeeded)
+                @if (User.Identity.Name == "lcompton")
                 {
                     <li><a class="dropdown-item" asp-area="Identity" asp-page="/Admin/Users/Index" title="Roles">View Users</a></li>
-                    }
+                }
                 <li><a class="dropdown-item" asp-area="" asp-controller="Conspectus" asp-action="Index">My Resume</a></li>
+                <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout">Log Out</a></li>
             </ul>
         </li>
     }

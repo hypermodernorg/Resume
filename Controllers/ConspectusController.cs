@@ -87,7 +87,7 @@ namespace Resume.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,UId,ResumeName, ResumeSlug, UserDisplayName,Summary,SummaryName,Experience,ExperienceName,Education,EducationName,Skills,SkillsName,Contact,ContactName")] Conspectus conspectus)
+        public async Task<IActionResult> Create([Bind("Id,UId,ResumeName, ResumeSlug, UserDisplayName, UserAspiration, Summary,SummaryName,Experience,ExperienceName,Education,EducationName,Skills,SkillsName,Contact,ContactName")] Conspectus conspectus)
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
 
@@ -150,7 +150,7 @@ namespace Resume.Controllers
             {
                 conspectus.Contacts = JsonSerializer.Deserialize<ContactInformation>(conspectus.Contact);
             }
-
+            ViewData["Message"] = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}/";
             return View(conspectus);
         }
 
@@ -159,7 +159,7 @@ namespace Resume.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,UId,ResumeName, ResumeSlug, UserDisplayName,Summary,SummaryName, Experiences, Educations, Skills, Contacts, ExperienceName, EducationName, SkillName, ContactName")] Conspectus conspectus)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,UId,ResumeName, ResumeSlug, UserDisplayName, UserAspiration ,Summary,SummaryName, Experiences, Educations, Skills, Contacts, ExperienceName, EducationName, SkillName, ContactName")] Conspectus conspectus)
         {
             
             if (id != conspectus.Id)

@@ -5,9 +5,12 @@
     
 }
 
-<h1>Edit</h1>
 
-<h4>Conspectus</h4>
+
+
+
+<h1>Editing the resume: @Model.ResumeName</h1>
+<p>Please fill out all the required fields below to populate the resume. To start, click below on "Resume Name and User Display Name," to open the accordian menu for those items. Next, fill out the fields inside the accordian section. Then click save at the bottom. Remember to save often and fill out all the required items in each section.</p>
 <hr />
 <div class="row">
     <div class="col">
@@ -27,7 +30,7 @@
                         <div class="accordion-body">
                             <div class="form-floating">
 
-                                <input asp-for="ResumeName" class="form-control" oninput="resumeSlug()" id="rname"/>
+                                <input asp-for="ResumeName" class="form-control" oninput="resumeSlug()" id="rname" />
                                 <label asp-for="ResumeName" class="form-label">Resume Name: Alphnumeric characters and spaces only.</label>
                                 <span asp-validation-for="ResumeName" class="text-danger"></span>
                             </div>
@@ -36,9 +39,9 @@
                                 @*<label for="basic-url" class="form-label">Your vanity URL</label>*@
                                 <label asp-for="ResumeSlug" class="form-label mt-2">The resume name above will be converted to the url slug below. This url is what you give employers to access your resume.</label>
                                 <div class="input-group mb-3">
-                                    <span class="form-control">https://localhost/</span>
+                                    <span class="form-control">@ViewData["Message"]</span>
                                     @*<input asp-for="ResumeName" class="form-control">*@
-                                    <input asp-for="ResumeSlug" id="rslug" type ="text" class="form-control" readonly />
+                                    <input asp-for="ResumeSlug" id="rslug" type="text" class="form-control" readonly />
                                 </div>
                             </div>
 
@@ -47,6 +50,11 @@
                                 <input asp-for="UserDisplayName" class="form-control" />
                                 <label asp-for="UserDisplayName" class="form-label"></label>
                                 <span asp-validation-for="UserDisplayName" class="text-danger"></span>
+                            </div>
+                            <div class="form-floating">
+                                <input asp-for="UserAspiration" class="form-control" />
+                                <label asp-for="UserAspiration" class="form-label"></label>
+                                <span asp-validation-for="UserAspiration" class="text-danger"></span>
                             </div>
                         </div>
                     </div>

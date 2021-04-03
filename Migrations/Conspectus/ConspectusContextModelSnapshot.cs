@@ -14,7 +14,7 @@ namespace Resume.Migrations.Conspectus
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "5.0.2");
+                .HasAnnotation("ProductVersion", "5.0.3");
 
             modelBuilder.Entity("Resume.Models.Conspectus", b =>
                 {
@@ -60,6 +60,9 @@ namespace Resume.Migrations.Conspectus
                         .HasColumnType("TEXT");
 
                     b.Property<Guid>("UId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserAspiration")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("UserDisplayName")

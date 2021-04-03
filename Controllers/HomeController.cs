@@ -16,14 +16,25 @@ namespace Resume.Controllers
 
         public IActionResult Index()
         {
+            ViewData["Title"] = "Home";
             ViewBag.IsHome = true;
-            ViewBag.Description = "Hypermodern's asp.net core 5, bootstrap 5, Nlog, Entity Framework Core, Identity, sqlite, and SCSS quickstart template.";
-            ViewBag.Keywords = "Hypermodern, quickstart, asp.net core 5, bootstrap 5, Nlog, Entity Framework Core, Identity, SCSS, sqlite";
+            ViewData["Description"] = "HTML Resume creation site.";
+            ViewData["Keywords"] = "Resume, Conspectus, Abstract, Lander's Resume";
+            return View();
+        }
+        public IActionResult About()
+        {
+            ViewData["Title"] = "About Lander";
+            ViewData["Description"] = "About the creator of Lander's Resume";
+            ViewData["Keywords"] = "Lander's Resume, Lander, Aspirations, Goals, Cats, Hobbies";
             return View();
         }
 
         public IActionResult Privacy()
         {
+            ViewData["Title"] = "Privacy";
+            ViewData["Description"] = "Privacy";
+            ViewData["Keywords"] = "Privacy";
             return View();
         }
         public IActionResult ResumeNotFound()

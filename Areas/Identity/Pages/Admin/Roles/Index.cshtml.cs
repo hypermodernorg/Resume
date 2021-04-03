@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Resume.Areas.Identity.Pages.Admin.Roles
 {
-    [Authorize("ViewRoles")]
+    //[Authorize("ViewRoles")]
     [IgnoreAntiforgeryToken(Order = 1001)]
     public class IndexModel : PageModel
     {

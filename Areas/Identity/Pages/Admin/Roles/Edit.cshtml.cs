@@ -16,7 +16,7 @@ namespace Resume.Areas.Identity.Pages.Admin.Roles
         public bool Selected { get; set; }
     }
 
-    [Authorize("EditRoles")]
+    //[Authorize("EditRoles")]
     public class EditModel : PageModel
     {
         private readonly UserManager<ApplicationUser> _userManager;
