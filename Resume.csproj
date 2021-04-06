@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+    <Configurations>Debug;Release;Linux</Configurations>
+    <UserSecretsId>75654be4-4492-4cde-85c7-dd4f5c421a44</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

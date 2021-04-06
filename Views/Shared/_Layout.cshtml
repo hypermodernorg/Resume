@@ -38,27 +38,32 @@
             <div class="col p-0 bg-light @topBorder">
                 <div class="row g-0">
                     <div class="col ps-5 pe-5 pt-2 pb-2">
-                        <nav class="navbar navbar-light navbar-expand-lg pt-3 pb-3">
-                            <span class="text-uppercase fw-bolder fs-4 pe-5">Lander's Resume</span>
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <div class="collapse navbar-collapse" id="navbarColor01">
-                                <ul class="navbar-nav me-auto">
-                                    <li class="nav.item active">
-                                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                                    </li>
-                                    <li class="nav.item active">
-                                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About Lander</a>
-                                    </li>
 
-                                    @*<li class="nav-item">
-                                        <a class="nav-link" asp-area="ImportBible" asp-controller="Registers" asp-action="Search">Search</a>
-                                    </li>*@
-                                </ul>
-                                <partial name="_LoginPartial" />
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                            <div class="container-fluid">
+                         
+                                <span class="text-uppercase fw-bolder fs-4 pe-5">Lander's Resume</span>
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                                    <ul class="navbar-nav me-auto">
+                                        <li class="nav-item">
+                                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                      
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About Lander</a>
+                                         
+                                        </li>
+  
+                                    </ul>
+                                    <partial name="_LoginPartial" />
+                                </div>
                             </div>
                         </nav>
+
+
                     </div>
                 </div>
 
